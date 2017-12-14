@@ -1,0 +1,62 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Geolocation</title>
+        <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+        <meta charset="utf-8">
+        <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"></script>
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCvkxNacOF7GYyR6DzITC0cnSjGAZFDHqo&callback=initMap"></script>
+    <style>
+        #map {
+            height: 100%;
+            margin-top: 10%;
+        }
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+    </head>
+    <body>
+        <p>memes</p>
+        <div id="map"></div>
+        <script>
+        
+            var var1 = 0;
+            var var2 = 0;
+            var pos = {lat: var1, lng: var2};
+            
+            function initMap() {
+                map = new google.maps.Map(document.getElementById('map'), {
+                    center: pos,
+                    zoom: 4
+                });
+                var marker = new google.maps.Marker({
+                        position: pos,
+                        map: map
+                });
+            }
+        </script>
+        <script>
+            $.ajax({
+                url:"https://data.cityofchicago.org/resource/_311-potholes.json",
+                success: function(result) {
+                    console.log(result);
+                    $.each(result, function(i, v){
+                        
+                        var marker = new google.maps.Marker({
+                            console.log(v.latitude, v.longitude);
+                        position: {lat: parseInt(v.latitude), lng: parseInt(v.longitude)},
+                        map: map
+                });
+                        
+                        $("body").append("<p>"+v.street_address+"</p>");
+                    });
+                    
+                    }
+                });
+        </script>
+    </body>
+</html>

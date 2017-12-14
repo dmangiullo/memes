@@ -1,0 +1,41 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Geolocation</title>
+        <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+        <meta charset="utf-8">
+    <style>
+        #map {
+        height: 100%;
+        }
+        
+        html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        }
+    </style>
+    </head>
+    <body>
+        <div id="map"></div>
+        <script>
+            var map, infoWindow;
+            function initMap() {
+                var var1 = 41.75512821065653;
+                var var2 = -87.57637806687501;
+                var pos = {lat: var1, lng: var2};
+                map = new google.maps.Map(document.getElementById('map'), {
+                    center: pos,
+                    zoom: 11
+                });
+                var marker = new google.maps.Marker({
+                            position: pos,
+                            map: map
+                });
+            }
+            
+        </script>
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCvkxNacOF7GYyR6DzITC0cnSjGAZFDHqo&callback=initMap"></script>
+    </body>
+</html>

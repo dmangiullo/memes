@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <style>
+    </style>
+    <head>
+        <script src="jquery-3.2.1.min.js"></script>
+        <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+        <script>
+            $(document).ready(function(){
+                
+                $("p1").click(function(){
+                    $("p1").hide();
+                });
+                
+                $("p2").click(function(){
+                    $("p1").show();
+                });
+                $("#btn1").click(function(){
+                    $("#btn2").fadeOut();
+                    $("#btn3").fadeOut("slow");
+                    $("#btn4").fadeOut(3000);
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <div class="well">
+            <p1>If you click on me, I will disappear.</p1>
+        </div>
+        <div class="well">
+            <p2>If you click on me, it will reappear.</p2>
+        </div>
+        <button class="btn btn1" type="button">Button</button>
+        <button class="btn btn2" type="button">Button2</button>
+        <button class="btn btn3" type="button">Button3</button>
+        <button class="btn btn4" type="button">Button4</button>
+    </body>
+</html>
