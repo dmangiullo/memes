@@ -34,13 +34,13 @@
             success: function(result) {
               for (var i=0; i<result.length; i++){
                 if (result[i]['location'] !== undefined){
-                if (result[i]['results'] == "Fail"){
-                    var coords = result[i]['location']['coordinates'];
-                    var latLng = new google.maps.LatLng(coords[1],coords[0]);
-                    var marker = new google.maps.Marker({
-                      position: latLng,
-                      map: map
-                    });
+                  if (result[i]['results'] == "Fail"){
+                      var coords = result[i]['location']['coordinates'];
+                      var latLng = new google.maps.LatLng(coords[1],coords[0]);
+                      var marker = new google.maps.Marker({
+                        position: latLng,
+                        map: map
+                      });
                 }
               }
               }
