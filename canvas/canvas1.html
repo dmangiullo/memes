@@ -9,23 +9,34 @@
         var c = document.getElementById("myCanvas");
         var ctx = c.getContext("2d");
         function initials() {
+            ctx.strokeStyle = "lime";
             ctx.lineWidth = 10;
             ctx.beginPath();
-            ctx.arc(100, 100, 20, (3/2)*Math.PI, (1/2)*Math.PI);
+                ctx.arc(100, 100, 20, (3/2)*Math.PI, (1/2)*Math.PI);
             ctx.stroke();
-            ctx.moveTo(100, 75);
-            ctx.lineTo(100, 125);
+                ctx.moveTo(100, 75);
+                ctx.lineTo(100, 125);
             ctx.stroke();
-            ctx.moveTo(140, 125);
-            ctx.lineTo(140, 75);
+                ctx.moveTo(140, 125);
+                ctx.lineTo(140, 75);
             ctx.stroke();
-            ctx.moveTo(140, 78);
-            ctx.lineTo(160, 100);
-            ctx.lineTo(180, 78);
-            ctx.moveTo(180, 75);
-            ctx.lineTo(180, 125);
+                ctx.moveTo(140, 78);
+                ctx.lineTo(160, 100);
+                ctx.lineTo(180, 78);
+                ctx.moveTo(180, 75);
+                ctx.lineTo(180, 125);
             ctx.stroke();
         }
+        function background() {
+            var grd=ctx.createLinearGradient(0, 0, 450, 0);
+            grd.addColorStop(0, "lime");
+            grd.addColorStop(1, "blue");
+            
+            ctx.fillStyle = grd;
+            ctx.fillRect(0, 0, 300, 300);
+            ctx.stroke();
+        }
+        background();
         initials();
     </script>
 </html>

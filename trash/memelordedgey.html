@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<body>
+<button id="start">start</button>
+<button id="stop">stop</button>
+
+<canvas id="myCanvas" width="400" height="400" style="border:1px solid #000000;">
+
+</canvas>
+<script>
+        var c = document.getElementById("myCanvas");
+        var ctx = c.getContext("2d");
+        function initials() {
+            ctx.lineWidth = 10;
+            ctx.beginPath();
+                ctx.moveTo(140, 125);
+                ctx.lineTo(140, 75);
+            ctx.stroke();
+                ctx.moveTo(140, 78);
+                ctx.lineTo(160, 100);
+                ctx.lineTo(180, 78);
+                ctx.moveTo(180, 75);
+                ctx.lineTo(180, 125);
+            ctx.stroke();
+                ctx.moveTo(200, 75);
+                ctx.lineTo(200, 125);
+                ctx.moveTo(200, 100);
+                ctx.lineTo(235, 100);
+                ctx.moveTo(235, 75);
+                ctx.lineTo(235, 125);
+            ctx.stroke();
+        }
+        initials();
+
+</script>
+</body>
+</html>
