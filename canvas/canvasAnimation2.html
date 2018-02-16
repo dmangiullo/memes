@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <canvas id="myCanvas" width="500" height="500" style="border:10px #66368E; border-style:solid;"></canvas>
+    </body>
+    <script>
+        var canvas = document.getElementById("myCanvas");
+        var mainContext = canvas.getContext('2d');
+         
+        var canvasWidth = canvas.width;
+        var canvasHeight = canvas.height;
+         
+        var angle = 0;
+        var angle2 = 0;
+        var angle3 = 0;
+         
+        function drawCircle() {
+            mainContext.clearRect(0, 0, canvasWidth, canvasHeight);
+            mainContext.fillStyle = "#AA8339";
+            mainContext.fillRect(0, 0, canvasWidth, canvasHeight);
+            
+            //blue back
+            mainContext.beginPath();
+            var radius1 = 5 + (canvasHeight+canvasWidth)/6 * Math.abs(Math.cos(angle3));
+            mainContext.arc(canvasWidth/2, canvasHeight/2, radius1, 0, Math.PI * 2);
+            mainContext.closePath();
+            mainContext.fillStyle = "#2D4471";
+            mainContext.fill();
+            
+            //red middle
+            mainContext.beginPath();
+            var radius2 = 50 + 85 * Math.abs(Math.cos(angle));
+            mainContext.arc(canvasWidth/2, canvasHeight/2, radius2, 0, Math.PI * 2);
+            mainContext.closePath();
+            mainContext.fillStyle = "#A43741";
+            mainContext.fill();
+            
+            //green front
+            mainContext.beginPath();
+            var radius3 = 10 + 50 * Math.abs(Math.cos(angle2));
+            mainContext.arc(canvasWidth/2, canvasHeight/2, radius3, 0, Math.PI * 2);
+            mainContext.closePath();
+            mainContext.fillStyle = "#408E2F";
+            mainContext.fill();
+            
+            angle += Math.PI / 64;
+            angle2 += Math.PI / 32;
+            angle3 += Math.PI / 24;
+            requestAnimationFrame(drawCircle);
+        }
+        drawCircle();
+    </script>
+</html>

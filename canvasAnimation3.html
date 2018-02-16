@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <canvas id="myCanvas" width="500" height="500" style="border:1px solid #ff9900;"></canvas>
+    </body>
+    <script>
+        //create canvas
+        var canvas = document.getElementById("myCanvas");
+        var mainContext = canvas.getContext('2d');
+        var canvasWidth = canvas.width;
+        var canvasHeight = canvas.height;
+        //yellow ball
+        var angle = 0;
+        var x = Math.random()*500;
+        var y = Math.random()*500;
+        var xs = 4;
+        var ys = 5;
+        //blue ball
+        var angle2 = 0;
+        var x1 = Math.random()*500;
+        var y1 = Math.random()*500;
+        var xs1 = 3;
+        var ys1 = 6;
+        //purple ball
+        var angle3 = 0;
+        var x2 = Math.random()*500;
+        var y2 = Math.random()*500;
+        var xs2 = 2;
+        var ys2 = 7;
+         
+        function drawCircles() {
+            //clear and fill canvas
+            mainContext.clearRect(0, 0, canvasWidth, canvasHeight);
+            mainContext.fillStyle = "#ff9900";
+            mainContext.fillRect(0, 0, canvasWidth, canvasHeight);
+            
+            //create yellow ball
+            mainContext.beginPath();
+            var radius = 10 + 20 * Math.abs(Math.cos(angle));
+            mainContext.arc(x, y, radius, 0, Math.PI * 2);
+            mainContext.closePath();
+            mainContext.fillStyle = "#EFFC00";
+            mainContext.fill();
+            
+            //create blue ball
+            mainContext.beginPath();
+            var radius2 = 10 + 20 * Math.abs(Math.cos(angle2));
+            mainContext.arc(x1, y1, radius2, 0, Math.PI * 2);
+            mainContext.closePath();
+            mainContext.fillStyle = "#0D58A6";
+            mainContext.fill();
+            
+            //create purple ball
+            mainContext.beginPath();
+            var radius3 = 10 + 20 * Math.abs(Math.cos(angle3));
+            mainContext.arc(x2, y2, radius3, 0, Math.PI * 2);
+            mainContext.closePath();
+            mainContext.fillStyle = "#7B07A9";
+            mainContext.fill();
+            
+            //change ball radius
+            angle += Math.PI / 64;
+            angle2 += Math.PI / 32;
+            angle3 += Math.PI / 16;
+            //change ball position
+            x=x+xs;
+            x1=x1+xs1;
+            x2=x2+xs2;
+            y=y+ys;
+            y1=y1+ys1;
+            y2=y2+ys2;
+            
+            //yellow ball bounce
+            if (y>=500-radius) {
+                ys=-ys;
+            }
+            if (x>=500-radius) {
+                xs=-xs;
+            }
+            if (y<=radius) {
+                ys=Math.abs(ys);
+            }
+            if (x<=radius) {
+                xs=Math.abs(xs);
+            }
+            
+            //blue ball bounce
+            if (y1>=500-radius2) {
+                ys1=-ys1;
+            }
+            if (x1>=500-radius2) {
+                xs1=-xs1;
+            }
+            if (y1<=radius2) {
+                ys1=Math.abs(ys1);
+            }
+            if (x1<=radius2) {
+                xs1=Math.abs(xs1);
+            }
+            
+            //purple ball bounce
+            if (y2>=500-radius3) {
+                ys2=-ys2;
+            }
+            if (x2>=500-radius3) {
+                xs2=-xs2;
+            }
+            if (y2<=radius3) {
+                ys2=Math.abs(ys2);
+            }
+            if (x2<=radius3) {
+                xs2=Math.abs(xs2);
+            }
+            requestAnimationFrame(drawCircles);
+        }
+        drawCircles();
+    </script>
+</html>
