@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <script>
+        var x=0;
+        
+        function checkKey(e) {
+            e = e || window.event;
+            //alert(e.keyCode);
+            if (e.keyCode == 37) {
+                x=x-1;
+            }
+            if(e.keyCode == 39) {
+                x=x+1;
+            }
+        }
+        document.onkeydown = checkKey;
+        
+        </script>
+    </body>
+</html>

@@ -1,0 +1,101 @@
+<html>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <body>
+        <canvas id="myCanvas" width="500" height="500" style="border:3px solid #48DD00;"></canvas>
+        <br>
+        <button class="btn btn-primary btn-sm" onclick="draw()">Play</button>
+        <p></p>
+    </body>
+    <script>
+         var canvas = document.getElementById("myCanvas");
+         var ctx = canvas.getContext("2d");
+         var xSpeed = 5;
+         var ySpeed = -5;
+         var ballx = 250;
+         var bally = 425;
+         var paddlex = 200;
+         var counter = 0;
+         var rectx = [];
+         
+         function drawPaddle() {
+            function checkKey(e) {
+                e = e || window.event;
+                if (e.keyCode == 37) {
+                    paddlex=paddlex-50;
+                }
+                if(e.keyCode == 39) {
+                    paddlex=paddlex+50;
+                }
+                if (paddlex<=0){
+                    paddlex=0;
+                }
+                if (paddlex>=400) {
+                    paddlex=400;
+                }
+            }
+            document.onkeydown = checkKey;
+            ctx.fillStyle = "#48DD00";
+            ctx.fillRect(paddlex, 450, 100, 15);
+         }
+         function makeRects() {
+            ctx.beginPath();
+            for(var i=0; i<10; i++){
+                if (counter%2==0){
+                        ctx.fillStyle="#00A87A";
+                } else {
+                    ctx.fillStyle="#FF5C00";
+                }
+                ctx.fillRect(i*50, 0, 50, 25);
+                counter++;
+            }
+            ctx.closePath();
+         }
+         
+         function draw() {
+            ctx.clearRect(0, 0, 500, 500);
+            ctx.fillStyle = "#06799F";
+            ctx.fillRect(0, 0, 500, 500);
+            
+            ctx.beginPath();
+            var radius = 10;
+            ctx.arc(ballx, bally, radius, 0, Math.PI * 2);
+            ctx.closePath();
+            ctx.fillStyle = "#ECFC00";
+            ctx.fill();
+            
+            if (ballx>=490) {
+                xSpeed = -xSpeed;
+            } if (ballx<=10) {
+                xSpeed = -xSpeed;
+            } if (bally<=10) {
+                ySpeed = -ySpeed;
+            }
+            
+            ballx=ballx+xSpeed;
+            bally=bally+ySpeed;
+
+            makeRects();
+            drawPaddle();
+            if (ballx>=paddlex && ballx<=paddlex+100 && bally==440) {
+                ySpeed= -ySpeed;
+            } if (bally>=450) {
+                ballx=200;
+                bally=440;
+                ySpeed=-5;
+                xSpeed=5;
+            }
+            for (var i=0; i<10; i++){
+                rectx[i]=i*50;
+                rectx[i][2]=20;
+                console.log(rectx[i][2]);
+                if (ballx>=rectx[i] && ballx<=rectx[i]+50 && bally==35){
+                    ySpeed=-ySpeed;
+                }
+            }
+            requestAnimationFrame(draw);
+         }
+    </script>
+</html>
