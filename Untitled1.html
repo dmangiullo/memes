@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <canvas onclick="myFunction(event)" id="myCanvas" width="500" height="500" style="border:3px solid #000000;"></canvas>
+        <br>
+        <button class="btn btn-info btn-md" onclick="location.reload()">Restart</button>
+    </body>
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+        <script>
+            var canvas = document.getElementById("myCanvas");
+            var ctx = canvas.getContext("2d");
+            var score=0;
+            var lives=3;
+            var randx=Math.random()*450;
+            var randy=Math.random()*450;
+            ctx.textAlign="center";
+            ctx.font="30px Arial";
+            ctx.fillText("Lives: "+lives, 60, 30);
+            ctx.fillText("Score: "+score, 430, 30);
+            ctx.fillRect(randx, randy, 50, 50);
+
+            function myFunction(event){
+                var xpos=event.clientX;
+                var ypos=event.clientY;
+                if (xpos>=randx && xpos<=randx+50 && ypos>=randy && ypos<=randy+50){
+                    ctx.clearRect(0, 0, 500, 500);
+                    score++;
+                    ctx.fillText("Score: "+score, 430, 30);
+                    ctx.fillText("Lives: "+lives, 60, 30);
+                    randx=Math.random()*450;
+                    randy=Math.random()*450;
+                    ctx.fillRect(randx, randy, 50, 50);
+                } else {
+                    ctx.clearRect(0, 0, 500, 500);
+                    lives--;
+                    ctx.fillText("Score: "+score, 430, 30);
+                    ctx.fillText("Lives: "+lives, 60, 30);
+                    randx=Math.random()*450;
+                    randy=Math.random()*450;
+                    ctx.fillRect(randx, randy, 50, 50);
+                    if (lives==0){
+                        alert("Game Over");
+                        location.reload();
+                    }
+                }
+                if (score==20 && lives==3){
+                    alert("Perfect Game!");
+                    location.reload();
+                } else if (score==20){
+                    alert("You Won!");
+                    location.reload();
+                }
+            }
+        </script>
+    </head>
+</html>
