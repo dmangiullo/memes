@@ -17,48 +17,45 @@
             var lives=3;
             var randx=Math.random()*450;
             var randy=Math.random()*450;
-            ctx.fillStyle="#009999";
-            ctx.fillRect(0, 0, 500, 500);
+            var imageObj2 = new Image();
+            var imageObj = new Image();
+            imageObj2.onload = function(){
+                ctx.drawImage(imageObj2, 0, 0);
+            };
+            imageObj.onload = function(){
+                ctx.drawImage(imageObj, randx, randy);
+            };
+            imageObj.src = "yeet.png";
+            imageObj2.src = "meme2.JPG";
             ctx.textAlign="center";
             ctx.font="30px Arial";
-            ctx.fillStyle="#FFE400";
-            ctx.fillText("Score: "+score, 430, 30);
-            ctx.fillStyle="#8BEA00";
-            ctx.fillText("Lives: "+lives, 60, 30);
             ctx.fillStyle="#FF7400";
-            ctx.fillRect(randx, randy, 50, 50);
+            ctx.fillText("Score: "+score, 430, 30);
+            ctx.fillText("Lives: "+lives, 60, 30);
 
             function myFunction(event){
                 var xpos=event.clientX;
                 var ypos=event.clientY;
                 if (xpos>=randx && xpos<=randx+50 && ypos>=randy && ypos<=randy+50){
                     ctx.clearRect(0, 0, 500, 500);
-                    ctx.fillStyle="#009999";
-                    ctx.fillRect(0, 0, 500, 500);
+                    ctx.drawImage(imageObj2, 0, 0);
                     score++;
-                    ctx.fillStyle="#FFE400";
                     ctx.fillText("Score: "+score, 430, 30);
-                    ctx.fillStyle="#8BEA00";
                     ctx.fillText("Lives: "+lives, 60, 30);
                     randx=Math.random()*450;
                     randy=Math.random()*450;
-                    ctx.fillStyle="#FF7400";
-                    ctx.fillRect(randx, randy, 50, 50);
+                    ctx.drawImage(imageObj, randx, randy);
                 } else if (xpos>=0 && xpos<=10 && ypos>=490){
                     alert("You found my secret..");
                 } else {
                     ctx.clearRect(0, 0, 500, 500);
-                    ctx.fillStyle="#009999";
-                    ctx.fillRect(0, 0, 500, 500);
+                    ctx.drawImage(imageObj2, 0, 0);
                     lives--;
-                    ctx.fillStyle="#FFE400";
                     ctx.fillText("Score: "+score, 430, 30);
-                    ctx.fillStyle="#8BEA00";
                     ctx.fillText("Lives: "+lives, 60, 30);
                     randx=Math.random()*450;
                     randy=Math.random()*450;
-                    ctx.fillStyle="#FF7400";
-                    ctx.fillRect(randx, randy, 50, 50);
+                    ctx.drawImage(imageObj, randx, randy);
                     if (lives==0){
                         alert("Game Over");
                         location.reload();
