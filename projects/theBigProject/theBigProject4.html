@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Ubuntu+Condensed"/>
+        <style>
+            #body {
+                background-color: #74C5E3;
+            }
+            #h1 {
+                text-align: center;
+                color: #3c4858;
+                font-family: "Ubuntu Condensed";
+            }
+            img {
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+                width: 15%;
+            }
+        </style>
+        <script>
+            /*var time=0;
+            function timer(){
+                time++;
+                $("#time").append(" "+time);
+            }
+            setInterval(timer, 1000);*/
+            function rain(){
+            //play rain noise for time
+            }
+            function whiteNoise(){
+            //play white noise for time
+            }
+            function ocean(){
+            //play ocean noise for time
+            }
+        </script>
+    </head>
+    <body id="body">
+    <h1 id="h1">Meditation Station</h1>
+    <br>
+     <center><div class="dropdown">
+        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">What type of sounds 
+        do you want played?</button>
+        <div class="dropdown-menu">
+            <a onclick="rain()" class="dropdown-item" href="theBigProject4.html">Rain</a>
+            <a onclick="whiteNoise" class="dropdown-item" href="theBigProject4.html">White Noise</a>
+            <a onclick="ocean" class="dropdown-item" href="theBigProject4.html">Ocean</a>
+            <a class="dropdown-item" href="theBigProject4.html">Silent</a>
+        </div>
+    </div></center>
+    <br>
+    <p id="time">Time:</p>
+    <div><img src="suitcase.png" style="float:left;" alt="Mountain View"></div>
+    <div><img src="ticket.png" style="float:right;" alt="Mountain View"></div>  
+    </body>
+</html>

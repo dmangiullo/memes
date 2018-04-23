@@ -6,9 +6,6 @@
     </script>
       </head>
         <body>
-          <h1>Failed Health Inspections</h1>
-          <button class="btn btn-info btn-lg">Display</button>
-          <button class="btn btn-info btn-lg btn2">Hide</button>
           <div class="div"></div>
     <script>
       
@@ -25,12 +22,6 @@
                       var data = "<p class='well'>" + name + " at " + address + "</p>";
                       $(".div").toggle();
                       $(".div").append(data);
-                      $(".btn").click(function() {
-                        $(".div").show();
-                      });
-                      $(".btn2").click(function() {
-                        $(".div1").hide()
-                      });
                   }
               }
             }

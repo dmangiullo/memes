@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Ubuntu+Condensed"/>
+        <style>
+            #body {
+                background-color: #74C5E3;
+            }
+            #h1 {
+                text-align: center;
+                color: #3c4858;
+                font-family: "Ubuntu Condensed";
+            }
+             img {
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+                width: 19.9%;
+            }
+        </style>
+        <script src="https://unpkg.com/dexie@latest/dist/dexie.js"></script>
+        <script>
+            var db = new Dexie("friend_database");
+            db.version(1).stores({
+                friends: 'name, shoeSize'
+            });
+            db.friends.put({name: "Nicolas", shoeSize: 8}).then (function(){
+                return db.friends.get('Nicolas');
+            }).then(function (friend) {
+                alert ("Nicolas has shoe size " + friend.shoeSize);
+            }).catch(function(error) {
+                alert ("Error: " + error);
+            });
+        </script>
+    </head>
+    <body id="body">
+    <a class="btn btn-outline-secondary" href="theBigProjectTitle.html">Back</a>
+    <h1 id="h1">Meditation Station</h1>
+    <br>
+    <center><div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" data-toggle="dropdown">Stress Level</button>
+        <div class="dropdown-menu">
+            <a onclick="assign()" class="dropdown-item" href="theBigProject2.html">None</a>
+            <a onclick="assign2()" class="dropdown-item" href="theBigProject2.html">Anxious</a>
+            <a onclick="assign3()" class="dropdown-item" href="theBigProject2.html">Frantic</a>
+        </div>
+    </div></center>
+     <div><img src="suitcase.png" style="float:left;" alt="Mountain View"></div>
+    <div><img src="ticket.png" style="float:right;" alt="Mountain View"></div>
+    </body>
+</html>

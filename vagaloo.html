@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyARMb63j3mHzCxvQfDRWmrtdj6OSe9uw1k&callback=initMap"></script>
+        <style>
+            #body {
+                background-color: #183028;
+            }
+            #navbar {
+                background-color: #FFB81C;
+            }
+            #title {
+                color: #FFB81C;
+            }
+            #time {
+                color: white;
+            }
+        </style>
+    </head>
+    <body id="body">
+        <br>
+        <br>
+        <center><h1 id="title">App Name</h1><center>
+        <br>
+        <br>
+        <nav id="navbar" class="navbar navbar-expand-sm">
+            <form class="form-inline" action="#">
+                <input class="form-control mr-sm-2" type="text" placeholder="Search">
+                <button class="btn btn-secondary" type="submit">Search</button>
+            </form>
+        </nav>
+        <br>
+        <script>
+            $.ajax({
+                url: "https://query.yahooapis.com/v1/public/yql?q=select%20item.condition%20from%20weather.forecast%20where%20woeid%20%3D%202487889&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys",
+                success: function(result){
+                    console.log(result);
+                    /*for (var i=0; i<result.length; i++){
+                        if (result[i]['primary_type']==undefined){
+                            console.log("Undefined");
+                        } else {
+                            console.log(result[i]['primary_type']);
+                        }
+                        if (result[i]['location']==undefined){
+                            console.log("Undefined");
+                        } else {
+                            console.log(result[i]['location']['coordinates'][0]);
+                            console.log(result[i]['location']['coordinates'][1]);
+                        }
+                    }*/
+                }
+            });
+        </script>
+    </body>
+</html>
